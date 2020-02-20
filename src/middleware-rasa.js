@@ -7,7 +7,7 @@ module.exports = config => {
   }
 
   if (!config.rasa_uri) {
-    config.rasa_uri = 'http://localhost:5000'
+    config.rasa_uri = 'http://localhost:5005/'
   }
 
   var middleware = {
@@ -23,11 +23,9 @@ module.exports = config => {
       debug('Sending message to Rasa', message.text)
       const options = {
         method: 'POST',
-        uri: `${config.rasa_uri}/parse`,
+        uri: `${config.rasa_uri}/model/parse`,
         body: {
-          q: message.text,
-          project: `${config.rasa_project}`
-          model: `${config.rasa_model}`
+          text: message.text
         },
         json: true
       }
