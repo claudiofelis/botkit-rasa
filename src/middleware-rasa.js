@@ -29,7 +29,7 @@ module.exports = config => {
         },
         json: true
       }
-
+      debug('Message request options', options)
       request(options)
         .then(response => {
           debug('Rasa response', response)
